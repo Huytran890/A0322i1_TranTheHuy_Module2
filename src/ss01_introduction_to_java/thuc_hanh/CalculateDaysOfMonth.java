@@ -1,0 +1,39 @@
+package ss01_introduction_to_java.thuc_hanh;
+
+import java.util.Scanner;
+
+public class CalculateDaysOfMonth {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please enter the month which you want: ");
+        int month = sc.nextInt();
+        String daysInMonth;
+        switch (month) {
+            case 2:
+                daysInMonth = " has 28 days or 29 days. ";
+                break;
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                daysInMonth = " has 31 days. ";
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                daysInMonth = " has 30 days. ";
+                break;
+            default:
+                daysInMonth = "";
+        }
+        if (!daysInMonth.equals(""))
+            System.out.println("The month " +month +daysInMonth);
+        else
+            System.out.print("Invalid input!");
+
+    }
+}
