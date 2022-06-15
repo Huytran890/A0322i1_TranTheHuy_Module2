@@ -40,12 +40,12 @@ public class StopWatch {
 
     public void Start() {
         this.startTime = System.currentTimeMillis();
-        System.out.println("Time accessing the algorithm selection sort is: "+this.startTime);
+        System.out.println("Time Begin accessing the algorithm selection sort is: "+this.startTime);
     }
 
     public void End() {
        this.endTime = System.currentTimeMillis();
-       System.out.println("Time accessing the algorithm selection sort is: "+this.endTime);
+       System.out.println("Time Ending accessing the algorithm selection sort is: "+this.endTime);
     }
 
     public double getElapsedTime() {
