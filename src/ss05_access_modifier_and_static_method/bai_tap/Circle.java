@@ -14,11 +14,11 @@ public class Circle {
         this.color = color;
     }
 
-    public double getRadius() {
+    private double getRadius() {
         return radius;
     }
 
-    public String getColor() {
+    private String getColor() {
         return color;
     }
 

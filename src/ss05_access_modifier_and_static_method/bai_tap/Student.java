@@ -22,14 +22,14 @@ public class Student {
         return classes;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         if (name == "")
             this.name = "John";
         else
             this.name = name;
     }
 
-    public void setClasses(String classes) {
+    private void setClasses(String classes) {
         if (classes == "")
             this.classes = "C02";
         else
