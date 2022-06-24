@@ -1,12 +1,12 @@
-package ss07_abstract_and_interface.thuc_hanh;
+package ss07_abstract_and_interface.thuc_hanh.thuc_hanh_1;
 
-import ss07_abstract_and_interface.thuc_hanh.animal.Animal;
-import ss07_abstract_and_interface.thuc_hanh.animal.Chicken;
-import ss07_abstract_and_interface.thuc_hanh.animal.Tiger;
-import ss07_abstract_and_interface.thuc_hanh.edible.Edible;
-import ss07_abstract_and_interface.thuc_hanh.fruit.Apple;
-import ss07_abstract_and_interface.thuc_hanh.fruit.Fruit;
-import ss07_abstract_and_interface.thuc_hanh.fruit.Orange;
+import ss07_abstract_and_interface.thuc_hanh.thuc_hanh_1.animal.Animal;
+import ss07_abstract_and_interface.thuc_hanh.thuc_hanh_1.animal.Chicken;
+import ss07_abstract_and_interface.thuc_hanh.thuc_hanh_1.animal.Tiger;
+import ss07_abstract_and_interface.thuc_hanh.thuc_hanh_1.edible.Edible;
+import ss07_abstract_and_interface.thuc_hanh.thuc_hanh_1.fruit.Apple;
+import ss07_abstract_and_interface.thuc_hanh.thuc_hanh_1.fruit.Fruit;
+import ss07_abstract_and_interface.thuc_hanh.thuc_hanh_1.fruit.Orange;
 
 public class AbstractAndInterfaceTests {
     public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class AbstractAndInterfaceTests {
             System.out.println(animal.makeSound());
 
             if (animal instanceof Chicken) {
-                Edible edibler = (Chicken) animal;
+                Edible edibler = (Edible) animal;
                 System.out.println(edibler.howToEat());
             }
         }

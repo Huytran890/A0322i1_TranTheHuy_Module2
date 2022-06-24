@@ -68,8 +68,9 @@ public class MangeDocument {
             switch (choice) {
                 case 1:
                     for (Document document : documentList) {
-                        if (document instanceof Book)
+                        if (document instanceof Book) {
                             System.out.println(document.toString());
+                        }
                     }
                     break;
                 case 2:
@@ -90,7 +91,7 @@ public class MangeDocument {
                     break;
             }
             System.out.println();
-        }while (flag);
+        } while (flag);
     }
 
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
-package ss07_abstract_and_interface.thuc_hanh.animal;
+package ss07_abstract_and_interface.thuc_hanh.thuc_hanh_1.animal;
 
-import ss07_abstract_and_interface.thuc_hanh.edible.Edible;
+import ss07_abstract_and_interface.thuc_hanh.thuc_hanh_1.edible.Edible;
 
 public class Chicken extends Animal implements Edible {
     @Override

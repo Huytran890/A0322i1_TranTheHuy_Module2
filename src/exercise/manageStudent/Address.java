@@ -1,4 +1,4 @@
-package exercise.employee;
+package exercise.manageStudent;
 
 import java.util.Scanner;
 
@@ -80,11 +80,11 @@ public class Address {
     }
 
     public static void main(String[] args) {
-        Address address1 = new Address();
+        exercise.employee.Address address1 = new exercise.employee.Address();
         address1.input();
         System.out.println(address1.toString());
 
-        Address address2 = new Address();
+        exercise.employee.Address address2 = new exercise.employee.Address();
         address2.input();
         System.out.println(address2.toString());
     }
