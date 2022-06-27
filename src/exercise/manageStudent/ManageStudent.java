@@ -1,256 +1,115 @@
-//package exercise.manageStudent;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Scanner;
-//
-//public class ArrayOfPerson {
-//    Person[] a;
-//    private int n;
-//    Scanner sc = new Scanner(System.in);
-//
-//    public ArrayOfPerson() {
-//        a = new Person[100];
-//        this.n = 0;
-//    }
-//
-//    public void input() {
-//        int z = 0;
-//        do {
-//            System.out.print("Enter number elementary in array: ");
-//            n = sc.nextInt();
-//            z = 0;
-//            System.err.print("Input wrong, enter n again!!!");
-//            z = 1;
-//            sc.next();
-//        } while (z == 1);
-//        for (int i = 0; i < n; i++) {
-//            System.out.print("Enter 1-Student / 2-Professor: ");
-//            int choose = sc.nextInt();
-//            if (choose == 1) {
-//                Person per = new Student();
-//                per.input();
-//                a[i] = per;
-//            } else if (choose == 2) {
-//                Person per = new Professor();
-//                per.input();
-//                a[i] = per;
-//            }
-//        }
-//    }
-//
-//    public void output() {
-//        System.out.println("*STUDENT*");
-//        for (int i = 0; i < n; i++) {
-//            if (a[i] instanceof Student)
-//                System.out.println(a[i].toString());
-//        }
-//        System.out.println("*PROFESSOR*");
-//        for (int i = 0; i < n; i++) {
-//            if (a[i] instanceof Professor)
-//                System.out.println(a[i].toString());
-//        }
-//    }
-//
-//    //SORT MARK FROM HIGH TO LOWEST IN STUDENT
-//    public void sortMark() {
-//        for (int i = 0; i < n - 1; i++) {
-//            for (int j = i + 1; j < n; j++)
-//                if (a[j] instanceof Student && a[i] instanceof Student)
-//                    a[i].a
-//                    if (per[i]. < a[j].getMark()) {
-//                        Person tempt = a[i];
-//                        a[i] = a[j];
-//                        a[j] = tempt;
-//                    }
-//        }
-//    }
-//
-//    //SORT RANK IN PROFESSOR
-//    public void sortRank() {
-//        for (int i = 0; i < n - 1; i++) {
-//            for (int j = i + 1; j < n; j++)
-//                if (a[j] instanceof Professor && a[i] instanceof Professor)
-//                    if (a[i] < (proa[j].getRank()) {
-//                        Person tempt = a[i];
-//                        a[i] = a[j];
-//                        a[j] = tempt;
-//                    }
-//        }
-//        System.out.println("*PROFESSOR*");
-//        for (int i = 0; i < n; i++) {
-//            if (a[i] instanceof Professor)
-//                System.out.println(a[i].toString());
-//        }
-//    }
-//
-//    //FIND MAX MARK AND MIN MARK
-//    public void maxMinMark() {
-//        Student[] studentList = new Student[100];
-//        int s = 0;//so phan tu trong mang studentList
-//        sortMark();
-//        for (int i = 0; i < n; i++) {
-//            if (a[i] instanceof Student) {
-//                studentList[s] = (Student) a[i]; //tach mang
-//                s++;
-//            }
-//        }
-//        System.out.print("Max point: ");
-//        System.out.println(studentList[0].toString());
-//        System.out.print("Min point ");
-//        System.out.println(studentList[s - 1].toString());
-//    }
-//
-//    //ADD STUDENT/ PROFESSOR
-//    public void add() {
-//        int option;
-//        do {
-//            System.out.println("ADD STUDENT-1 / PROFESSOR-2/ END-3: ");
-//            option = sc.nextInt();
-//            if (option == 1)        //ADD STUDENT
-//            {
-//                Person per = new Student();
-//                per.input();
-//                n++;
-//                a[n - 1] = per;
-//            } else if (option == 2)    //ADD PROFESSOR
-//            {
-//                Person per = new Professor();
-//                per.input();
-//                n++;
-//                a[n - 1] = per;
-//            }
-//        } while (option != 3);
-//        System.out.println("END");
-//    }
-//
-//    //FIND NAME
-//    public void findName(String name) {
-//        int count = 0;
-//        for (int i = 0; i < n; i++) {
-//            if (a[i] instanceof Student) {
-//                if (a[i].getName().equalsIgnoreCase(name)) {
-//                    System.out.print("Student: ");
-//                    System.out.println(a[i].toString());
-//                    count++;
-//                }
-//            }
-//        }
-//        for (int i = 0; i < n; i++) {
-//            if (a[i] instanceof Professor) {
-//                if (a[i].getName().equalsIgnoreCase(name)) {
-//                    System.out.print("Professor: ");
-//                    System.out.println(a[i].toString());
-//                    count++;
-//                }
-//            }
-//        }
-//        if (count == 0)
-//            System.err.println("No exist");
-//    }
-//
-//
-//
-//    //FIND Name both of professor and student
-//    public void find() {
-//        System.out.println("Enter the name who you want to find");
-//        String name = sc.nextLine();
-//        findName(name);
-//        System.out.println("END");
-//    }
-//
-//    private void delete(int index) {
-//        for (int i = index; i < n; i++)
-//            a[i] = a[i + 1];
-//        n--;
-//    }
-//
-//    //DELETE STU
-//    public void deleteStudent(String name) {
-//        int count = 0;
-//        for (int i = 0; i < n; i++) {
-//            if (a[i] instanceof Student) {
-//                if (a[i].getName().equalsIgnoreCase(name)) {
-//                    delete(i);
-//                    count++;
-//                }
-//            }
-//        }
-//        if (count != 0)
-//            System.err.println("DELETED!!");
-//        else
-//            System.err.println("NO EXIST");
-//    }
-//
-//    //DELETE PRO
-//    public void deleteProfessor(String name) {
-//        int count = 0;
-//        for (int i = 0; i < n; i++) {
-//            if (a[i] instanceof Professor) {
-//                if (a[i].getName().equalsIgnoreCase(name)) {
-//                    delete(i);
-//                    count++;
-//                }
-//            }
-//        }
-//        if (count != 0)
-//            System.out.println("DELETED!!");
-//        else
-//            System.out.println("NO EXIST");
-//    }
-//
-//    //DELETE BOTH STU AND PRO
-//    public void delete() {
-//        int option;
-//        do {
-//            System.out.println("DELETE OPTION: 1.STUDENT/ 2.PROFESSOR/ 3.EXIT: ");
-//            option = sc.nextInt();
-//            if (option == 1) {
-//                System.out.print("Enter student name: ");
-//                String name = sc.next();
-//                deleteStudent(name);
-//            } else if (option == 2) {
-//                System.out.print("Enter professor name: ");
-//                String name = sc.next();
-//                deleteProfessor(name);
-//            }
-//        } while (option != 3);
-//        System.out.println("END");
-//    }
-//
-//    //STATIC STUDENT
-//    public void staticStudent() {
-//        int count = 0;
-//        for (int i = 0; i < n; i++) {
-//            if (a[i] instanceof Student)
-//                count++;
-//        }
-//        System.out.println("There are " + count + " students");
-//    }
-//
-//    //STATIC PROFESSOR
-//    public void staticProfessor() {
-//        int count = 0;
-//        for (int i = 0; i < n; i++) {
-//            if (a[i] instanceof Professor)
-//                count++;
-//        }
-//        System.out.println("There are " + count + " professors");
-//    }
-//
-//    //STATIC BOTH STU AND PRO
-//    public void staticPer() {
-//        staticStudent();
-//        staticProfessor();
-//    }
-//
-//    public static void main(String[] args) {
-//        ArrayOfPerson arr = new ArrayOfPerson();
-//        //		arr.staticPer();
-//        //		arr.output();
-//        //		arr.find();
-//    }
-//}
-//
-//
-//}
+package exercise.manageStudent;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class ManageStudent {
+    static ArrayList<Student> studentLists = new ArrayList<>();
+    static int choice;
+    static Scanner sc = new Scanner(System.in);
+
+    public static void showMenu() {
+        System.out.println("1. Enter the information for Student: ");
+        System.out.println("2. Display the information for Student: ");
+        System.out.println("3. Display the max and min following the medium score: ");
+        System.out.println("4. Search by ID: ");
+        System.out.println("5. Sort A-Z following the name and display: ");
+        System.out.println("6. Display students get scholarships and display sort by descending score: ");
+        System.out.println("7. Exist!");
+    }
+
+    public static void main(String[] args) {
+        do {
+            showMenu();
+            System.out.println("Choice: ");
+            choice = Integer.parseInt(sc.nextLine());
+            switch (choice) {
+                case 1:
+                    int n;
+                    System.out.println("Please enter the number of student in List: ");
+                    n = Integer.parseInt(sc.nextLine());
+                    for (int i = 0; i < n; i++) {
+                        Student student = new Student();
+                        student.input();
+                        studentLists.add(student);
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < studentLists.size(); i++) {
+                        System.out.println(studentLists.get(i).toString());
+                    }
+                    break;
+                case 3:
+                    int minIndex = 0, maxIndex = 0;
+                    double minMark, maxMark;
+                    minMark = studentLists.get(0).getMark();
+                    maxMark = studentLists.get(0).getMark();
+                    for (int i = 0; i < studentLists.size(); i++) {
+                        if (studentLists.get(i).getMark() < minMark) {
+                            minIndex = i;
+                            minMark = studentLists.get(i).getMark();
+                        }
+                        if (studentLists.get(i).getMark() > maxMark) {
+                            maxIndex = i;
+                            maxMark = studentLists.get(i).getMark();
+                        }
+                    }
+                    System.out.println("The student who has the highest mark is: ");
+                    System.out.println(studentLists.get(maxIndex).toString());
+                    System.out.println("The student who has the lowest mark is: ");
+                    System.out.println(studentLists.get(minIndex).toString());
+                    break;
+                case 4:
+                    int count = 0;
+                    System.out.println("Please enter the id's student which you need to find: ");
+                    String idSearch = sc.nextLine();
+                    for (Student student : studentLists) {
+                        if (student.getId().equalsIgnoreCase(idSearch)) {
+                            System.out.println(student.toString());
+                            count++;
+                        }
+                    }
+                    if (count == 0)
+                        System.out.println("Student not found!");
+                    break;
+                case 5:
+                    // sap xep ten sinh vien theo thu tu tu A-Z (Name)
+                    Collections.sort(studentLists, new Comparator<Student>() {
+                        @Override
+                        public int compare(Student o1, Student o2) {
+                            int temp = o1.getName().compareTo(o2.getName());
+                            if (temp >= 0)
+                                return 1;
+                            return -1;
+                        }
+                    });
+                    // hien thi thong tin
+                    for (int i = 0; i < studentLists.size(); i++) {
+                        System.out.println(studentLists.get(i).toString());
+                    }
+                    break;
+                case 6:
+                    Collections.sort(studentLists, new Comparator<Student>() {
+                        @Override
+                        public int compare(Student o1, Student o2) {
+                            return o1.getMark() >= o2.getMark() ? 1 : 1; // tro ve -1 de khong doi cho, tro ve 1 de doi cho.
+                        }
+                    });
+                    // hien thi thong tin
+                    for (int i = 0; i < studentLists.size(); i++) {
+                        if (studentLists.get(i).checkScholarShip())
+                            System.out.println(studentLists.get(i).toString());
+                    }
+                    break;
+                case 7:
+                    System.out.println("Goodbye.See you again!!!");
+                    break;
+                default:
+                    System.out.println("Wrong Entered");
+                    break;
+            }
+        } while (choice != 7);
+    }
+}
