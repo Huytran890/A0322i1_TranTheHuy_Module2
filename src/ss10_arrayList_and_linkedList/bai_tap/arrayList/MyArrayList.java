@@ -1,4 +1,4 @@
-package ss10_arrayList_and_linkedList.bai_tap;
+package ss10_arrayList_and_linkedList.bai_tap.arrayList;
 
 import java.util.Arrays;
 
