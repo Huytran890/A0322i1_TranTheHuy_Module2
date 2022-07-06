@@ -1,16 +1,11 @@
-package ss12_java_collection_framework.thuc_hanh.thuc_hanh_2;
+package ss12_java_collection_framework.thuc_hanh_3;
 
-public class Student {
+public class Student implements Comparable<Student> {
     private String name;
-    private int age;
+    private Integer age;
     private String address;
 
-    public Student() {
-
-    }
-
-    public Student(String name, int age, String address) {
-        super();
+    public Student(String name, Integer age, String address) {
         this.name = name;
         this.age = age;
         this.address = address;
@@ -24,11 +19,11 @@ public class Student {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -42,6 +37,13 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student Name: {" + name + ", age: " + age + ", address: " + address + "}.";
+        return "Student {" +
+                "name: '" + name + '\'' +
+                "}.";
+    }
+
+    @Override
+    public int compareTo(Student student) {
+        return this.getName().compareTo(student.getName());
     }
 }
