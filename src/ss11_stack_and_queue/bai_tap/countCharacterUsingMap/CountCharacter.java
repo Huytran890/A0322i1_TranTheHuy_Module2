@@ -1,9 +1,9 @@
-package ss11_stack_and_queue.bai_tap;
+package ss11_stack_and_queue.bai_tap.countCharacterUsingMap;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class CountCharacterUsingMap {
+public class CountCharacter {
     private static Map<String, Integer> listCharacter;
 
     static {
@@ -43,8 +43,8 @@ public class CountCharacterUsingMap {
     }
 
     public static void main(String[] args) {
-        CountCharacterUsingMap.countCharacter("Toiyeuemomoivutru");
-        for (Map.Entry<String, Integer> o : CountCharacterUsingMap.listCharacter.entrySet()) {
+        CountCharacter.countCharacter("Toiyeuemomoivutru");
+        for (Map.Entry<String, Integer> o : CountCharacter.listCharacter.entrySet()) {
             System.out.print(o.getKey() + " - ");
             System.out.println(o.getValue());
         }
