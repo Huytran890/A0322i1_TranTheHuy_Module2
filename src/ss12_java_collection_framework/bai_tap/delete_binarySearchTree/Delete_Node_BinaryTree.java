@@ -1,77 +1,187 @@
 package ss12_java_collection_framework.bai_tap.delete_binarySearchTree;
 
-public class Delete_Node_BinaryTree<T> {
-    public class Node<T> {
-        Comparable<T> data;
-        Node<T> left, right;
+import java.util.LinkedList;
+import java.util.Queue;
 
-        public Node(Comparable<T> data) {
-            this.data = data;
+public class Delete_Node_BinaryTree<E> {
+    private static class Node<E> {
+        Comparable<E> info;
+        Node<E> left, right;
+
+        public Node(Comparable<E> i) {
+            this.info = i;
             this.left = null;
             this.right = null;
         }
 
-        public Node(Comparable<T> data, Node<T> left, Node<T> right) {
-            this.data = data;
-            this.left = left;
-            this.right = right;
+        public Node(Comparable<E> i, Node<E> l, Node<E> r) {
+            this.info = i;
+            this.left = l;
+            this.right = r;
         }
-
     }
 
     private Node root = null;
-    private String s = "";
 
-    public void add() {
-        Node r7 = new Node(11);
-        Node r6 = new Node(6);
-        Node r4 = new Node(4, r6, null);
-        Node r5 = new Node(71, r7, null);
-        Node r3 = new Node(8);
-        Node r2 = new Node(7, r4, r5);
-        Node r1 = new Node(1, r3, null);
-        root = new Node(3, r1, r2);
-    }
-
-
-    private int minValue(Node<T> r) {
-        while (r.left != null)
-            r = r.left;
-
-        return (Integer) (r.data);
-    }
-
-    public int minValue() {
-        return minValue(root);
-    }
-
-    private void deleteValue(Comparable<T> data) {
-        root = deleteNode(root, data);
-    }
-
-    public Node deleteNode(Node<T> root, Comparable<T> x) {
-        if (root == null) return root;
-
-        if (x.compareTo((T) root.data) < 0)
-            root.left = deleteNode(root.left, x);
-        else if (x.compareTo((T) root.data) > 0)
-            root.right = deleteNode(root.right, x);
-        else {
-            if (root.left == null)
-                return root.right;
-            else if (root.right == null)
-                return root.left;
-            root.data.equals(minValue(root.right));
-
-            root.right = deleteNode(root.right, root.data);
+    //	Them 1 node vao cay BST
+    private Node<E> add(Node<E> r, Comparable<E> e) {
+        if (r == null) {
+            r = new Node<>(e);
+            return r;
         }
-        return root;
+        if (e.compareTo((E) r.info) < 0)
+            r.left = add(r.left, e);
+        else if (e.compareTo((E) r.info) > 0)
+            r.right = add(r.right, e);
+        return r;
+    }
+
+    public void add(Comparable<E> x) {
+        root = add(root, x);
+    }
+
+    //	tim x
+    private boolean find(Node<E> r, Comparable<E> e) {
+        if (r == null)
+            return false;
+        else if (e.compareTo((E) r.info) == 0)
+            return true;
+        else if (e.compareTo((E) r.info) < 0)
+            return find(r.left, e);
+        else return find(r.right, e);
+    }
+
+    public boolean find(Comparable<E> x) {
+        return find(root, x);
+    }
+
+    //	duyet trung tu
+    private void midOrder(Node r) {
+        if (r != null) {
+            midOrder(r.left);
+            System.out.print(r.info + " ");
+            midOrder(r.right);
+        }
+    }
+
+    public void midOrder() {
+        midOrder(root);
+    }
+
+    //	Find Max and Min
+    private E max_Value(Node r) {
+        if (r.right == null)
+            return (E) r.info;
+        return max_Value(r.right);
+    }
+
+    public E max_Value() {
+        return max_Value(root);
+    }
+
+    private E min_Value(Node r) {
+        if (r.left == null)
+            return (E) r.info;
+        return min_Value(r.left);
+    }
+
+    public E min_Value() {
+        return min_Value(root);
+    }
+
+    //	kiem tra cay co phai la cay BST hay không
+    private boolean is_Tree_Bst(Node r, int min, int max) {
+        if (r == null)
+            return true;
+        if ((int) r.info <= min || (int) r.info >= max)
+            return false;
+        return is_Tree_Bst(r.left, min, (int) r.info) && is_Tree_Bst(r.right, (int) r.info, max);
+    }
+
+    public boolean is_Tree_Bst() {
+        return is_Tree_Bst(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    //	Xoa node khoi cay
+    int minValue(Node r) {
+        int min = (int) r.info;
+        while (r.left != null) {
+            min = (int) r.left.info;
+            r = r.left;
+        }
+        return min;
+    }
+
+    private Node delete_Node(Node r, int data) {
+        if (r == null)
+            return r;
+        if (data < (int) r.info)
+            delete_Node(r.left, data);
+        else if (data > (int) r.info)
+            delete_Node(r.right, data);
+        else {
+            if (r.left == null && r.right == null) //nếu là node lá
+                return null;
+            else if (r.left == null)
+                return r.right;    //nếu node cần xoá chỉ có node bên phải
+            else if (r.right == null)
+                return r.left;    //nếu node cần xoá chỉ có node bên trái
+            //có 2 con
+			r.info = minValue(r.right);
+			r.right = delete_Node(r.right, (int) r.info);
+//            Node p = r.left;
+//            while (p.right != null) p = p.right;
+//            r.info = p.info;
+//            r.left = delete_Node(r.left, (int) p.info);
+        }
+        return r;
+    }
+
+    public void delete_Node(int data) {
+        root = delete_Node(root, data);
+    }
+
+    //	Duyệt theo chiều rộng
+    public void duyet_Chieu_Rong() {
+        Queue<Node> q = new LinkedList<>();
+        if (root != null) q.add(root);
+        while (!q.isEmpty()) {
+            Node x = q.remove();
+            System.out.print(x.info + " ");
+            if (x.left != null) q.add(x.left);
+            if (x.right != null) q.add(x.right);
+        }
     }
 
     public static void main(String[] args) {
-        Delete_Node_BinaryTree<Integer> binaryTree = new Delete_Node_BinaryTree<>();
-        binaryTree.add();
+        Delete_Node_BinaryTree<Integer> B = new Delete_Node_BinaryTree<>();
+		/*
+		 		50
+		 	   /  \
+		 	 30	   70
+		 	/  \   /  \
+		  20   40 60  80
+		 */
+        B.add(50);
+        B.add(30);
+        B.add(20);
+        B.add(40);
+        B.add(70);
+        B.add(60);
+        B.add(80);
+//		B.add(90);
+        B.duyet_Chieu_Rong();
         System.out.println();
+        B.delete_Node(20);
+        B.midOrder();
+//		B.duyet_Chieu_Rong();
+//		System.out.println();
+//		System.out.println(B.max_Value());
+//		System.out.println(B.min_Value());
+//		System.out.println(B.find(7));
+//		System.out.println(B.is_Tree_Bst());
+
     }
+
 
 }
