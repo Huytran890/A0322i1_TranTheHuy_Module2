@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Find_maximum_Subsequence {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.print("Nhập chuỗi: ");
+        System.out.print("Enter the string: ");
         String string = input.nextLine();
 
         LinkedList<Character> list = new LinkedList<>();
