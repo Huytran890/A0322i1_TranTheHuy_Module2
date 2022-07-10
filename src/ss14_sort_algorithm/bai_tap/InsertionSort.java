@@ -1,9 +1,9 @@
 package ss14_sort_algorithm.bai_tap;
 
-public class InsertSort {
+public class InsertionSort {
     private static double[] array = {2, 1.5, 6.6, 10, 15, 98, 53, 7.4, 1.2, 8.3};
 
-    private static void insertionSort(double[] list) {
+    private static void insertSort(double[] list) {
         int n = list.length;
         for (int i = 0; i < n; i++) {
             double temp = list[i];
@@ -22,8 +22,8 @@ public class InsertSort {
             System.out.print(array + " ");
         }
         System.out.println();
-        System.out.print("The list after sorting is: ");
-        insertionSort(array);
+        System.out.print("The list after sorting by insert is: ");
+        insertSort(array);
         for (double array : array)
             System.out.print(array + " ");
     }
